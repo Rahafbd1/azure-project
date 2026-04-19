@@ -1,0 +1,2180 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "actionGroups_vm_alert_group_name": {
+      "type": "String"
+    },
+    "loadBalancers_lb_capstone_name": {
+      "type": "String"
+    },
+    "metricAlerts_AlertOpsTeam_name": {
+      "type": "String"
+    },
+    "networkInterfaces_vm_web_132_z1_name": {
+      "type": "String"
+    },
+    "networkInterfaces_vm_web_1526_z1_name": {
+      "type": "String"
+    },
+    "networkInterfaces_vm_web_2623_z1_name": {
+      "type": "String"
+    },
+    "networkInterfaces_vm_web_2913_z1_name": {
+      "type": "String"
+    },
+    "networkSecurityGroups_nsg_web_name": {
+      "type": "String"
+    },
+    "networkSecurityGroups_vm_web_1_nsg_name": {
+      "type": "String"
+    },
+    "networkSecurityGroups_vm_web_2_nsg_name": {
+      "type": "String"
+    },
+    "networkSecurityGroups_vmweb1nsg264_name": {
+      "type": "String"
+    },
+    "networkSecurityGroups_vmweb2nsg594_name": {
+      "type": "String"
+    },
+    "privateDnsZones_privatelink_database_windows_net_name": {
+      "type": "String"
+    },
+    "privateDnsZones_privatelink_vaultcore_azure_net_name": {
+      "type": "String"
+    },
+    "privateEndpoints_kv_pe_name": {
+      "type": "String"
+    },
+    "privateEndpoints_sql_private_endpoint_name": {
+      "type": "String"
+    },
+    "publicIPAddresses_lb_public_ip_name": {
+      "type": "String"
+    },
+    "publicIPAddresses_vm_web_1_ip_name": {
+      "type": "String"
+    },
+    "publicIPAddresses_vm_web_2_ip_name": {
+      "type": "String"
+    },
+    "publicIPAddresses_vmweb1ip647_name": {
+      "type": "String"
+    },
+    "publicIPAddresses_vmweb2ip457_name": {
+      "type": "String"
+    },
+    "servers_capstone_sql_server_001_name": {
+      "type": "String"
+    },
+    "sshPublicKeys_vm_web_2_key1_name": {
+      "type": "String"
+    },
+    "sshPublicKeys_vm_web_2_key_name": {
+      "type": "String"
+    },
+    "vaults_kv_capstone1_name": {
+      "type": "String"
+    },
+    "virtualMachines_vm_web_1_name": {
+      "type": "String"
+    },
+    "virtualMachines_vm_web_2_name": {
+      "type": "String"
+    },
+    "virtualNetworks_vnet_capstone_name": {
+      "type": "String"
+    },
+    "vulnerabilityAssessments_Default_storageContainerPath": {
+      "type": "SecureString"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2025-04-01",
+      "location": "eastus",
+      "name": "[parameters('sshPublicKeys_vm_web_2_key_name')]",
+      "properties": {
+        "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7ZIoDuWoWR3p6t5N+ZRyhs3fTPJxk0RXUV2cA8ImlRvHX3pQTlalgdJYjvtd2oKA+gJfgceGm0O/Qi1QyH26bz5NH5Uihv0LO3lbpuxKzap/M0nGRG81mMBnNBQA50IPMXFvf0uadH/xoJQrtcXQbQJt3E1vmN5C3yoyGFPzGwVR9OA6wH0wzieNsj2+m/LGK8TzyoNOk0nqDaIxu/op23ogYPgrZMo+CHXolnjCqYyznXSOJwqkB26AIGK5YpKr4f4yWHFxV1lj5DFzaUhcyaC9zD5Who8yd4Fe7qt0UueZxLHFq617DagS2BrmF0VFKfqNnJpZV8E5rYM4VtiVf+q0dM6VtV5InhpGlZxZaBZ+2S2LBcxjtOMNU9CoKHU1d4pGSEZ3hsCOUsfYZGw+zDkLqtrh+k3WqojLXrc/46E7GIt5shOMj+vaJN9VIv0Sxp2e3/+90fIkssJRXUAtbxIo6mtYkQ3mztOBqkkQ3SrvKtrIYl5pwVI5nHFxxfaE= generated-by-azure"
+      },
+      "type": "Microsoft.Compute/sshPublicKeys"
+    },
+    {
+      "apiVersion": "2025-04-01",
+      "location": "eastus",
+      "name": "[parameters('sshPublicKeys_vm_web_2_key1_name')]",
+      "properties": {
+        "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDBHrX5GZALeD+p8IsMQHYw+LJHhSR/5mf0/vlAYo+dzURunZtldBPjZU8w0Qn0L/ue7FlLy3kHPX4IeWBB22wzHjCz5AI43N2zaO+LIoj1N/oDJeYKLWB9AVcjFqKJLXULjvT/6nh0XWx4OwoBeSIUbiLnDfSnSbBPlzAINvJz7czViu/A5mYo4dy0PcZ184d7t4RzYuxxzMEBON1yFiSfv9z3OVdCXcOI/TOpf4G3S6Fx6FbQ1vuYZDJMfVSCRbvqBesLHpJUhq2QWUKNUSrMQCVJQAEmusn5S7VXk8HHjHQ3zcZrhE0dGYI8JZoKteGQNJMi1B6+o01L0VxxQwS1+MOu+2fiNFvPHwiPeLVgB1oJKomk8nzbuEZ81MNka2gAoXNorZvFdOL4BHzqLEQ8JmsLC86u5HPORHfslibWqXp2ju8MQo9HoZPCRdn0DptBazJty6i9AgIF98RBOOohHkFBeEfhbXiGwbC27wIKY8p8I1opfHpCA0xZ4NXjINU= generated-by-azure"
+      },
+      "type": "Microsoft.Compute/sshPublicKeys"
+    },
+    {
+      "apiVersion": "2024-10-01-preview",
+      "location": "eastus",
+      "name": "[parameters('actionGroups_vm_alert_group_name')]",
+      "properties": {
+        "armRoleReceivers": [],
+        "automationRunbookReceivers": [],
+        "azureAppPushReceivers": [],
+        "azureFunctionReceivers": [],
+        "emailReceivers": [
+          {
+            "emailAddress": "Rahafbadar11@gmail.com",
+            "name": "RuleA_-EmailAction-",
+            "useCommonAlertSchema": false
+          }
+        ],
+        "enabled": true,
+        "eventHubReceivers": [],
+        "groupShortName": "vmalert",
+        "itsmReceivers": [],
+        "logicAppReceivers": [],
+        "smsReceivers": [],
+        "voiceReceivers": [],
+        "webhookReceivers": []
+      },
+      "type": "microsoft.insights/actionGroups"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "location": "eastus",
+      "name": "[parameters('vaults_kv_capstone1_name')]",
+      "properties": {
+        "accessPolicies": [],
+        "enablePurgeProtection": true,
+        "enableRbacAuthorization": true,
+        "enableSoftDelete": true,
+        "enabledForDeployment": false,
+        "enabledForDiskEncryption": false,
+        "enabledForTemplateDeployment": false,
+        "networkAcls": {
+          "bypass": "None",
+          "defaultAction": "Deny",
+          "ipRules": [],
+          "virtualNetworkRules": []
+        },
+        "provisioningState": "Succeeded",
+        "publicNetworkAccess": "Disabled",
+        "sku": {
+          "family": "A",
+          "name": "Standard"
+        },
+        "softDeleteRetentionInDays": 90,
+        "tenantId": "82676786-5bc7-43c6-b8f8-b3ee02b0b5f3",
+        "vaultUri": "[concat('https://', parameters('vaults_kv_capstone1_name'), '.vault.azure.net/')]"
+      },
+      "type": "Microsoft.KeyVault/vaults"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "location": "eastus",
+      "name": "[parameters('networkSecurityGroups_nsg_web_name')]",
+      "properties": {
+        "securityRules": [
+          {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups/securityRules', parameters('networkSecurityGroups_nsg_web_name'), 'allow-http')]",
+            "name": "allow-http",
+            "properties": {
+              "access": "Allow",
+              "description": "Allow web traffic",
+              "destinationAddressPrefix": "*",
+              "destinationAddressPrefixes": [],
+              "destinationPortRange": "80",
+              "destinationPortRanges": [],
+              "direction": "Inbound",
+              "priority": 100,
+              "protocol": "TCP",
+              "sourceAddressPrefix": "*",
+              "sourceAddressPrefixes": [],
+              "sourcePortRange": "*",
+              "sourcePortRanges": []
+            },
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+          },
+          {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups/securityRules', parameters('networkSecurityGroups_nsg_web_name'), 'allow-https')]",
+            "name": "allow-https",
+            "properties": {
+              "access": "Allow",
+              "destinationAddressPrefix": "*",
+              "destinationAddressPrefixes": [],
+              "destinationPortRange": "443",
+              "destinationPortRanges": [],
+              "direction": "Inbound",
+              "priority": 110,
+              "protocol": "TCP",
+              "sourceAddressPrefix": "*",
+              "sourceAddressPrefixes": [],
+              "sourcePortRange": "*",
+              "sourcePortRanges": []
+            },
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+          },
+          {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups/securityRules', parameters('networkSecurityGroups_nsg_web_name'), 'allow-rdp')]",
+            "name": "allow-rdp",
+            "properties": {
+              "access": "Allow",
+              "destinationAddressPrefix": "*",
+              "destinationAddressPrefixes": [],
+              "destinationPortRange": "3389",
+              "destinationPortRanges": [],
+              "direction": "Inbound",
+              "priority": 120,
+              "protocol": "TCP",
+              "sourceAddressPrefix": "*",
+              "sourceAddressPrefixes": [],
+              "sourcePortRange": "*",
+              "sourcePortRanges": []
+            },
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+          }
+        ]
+      },
+      "type": "Microsoft.Network/networkSecurityGroups"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "location": "eastus",
+      "name": "[parameters('networkSecurityGroups_vm_web_1_nsg_name')]",
+      "properties": {
+        "securityRules": [
+          {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups/securityRules', parameters('networkSecurityGroups_vm_web_1_nsg_name'), 'RDP')]",
+            "name": "RDP",
+            "properties": {
+              "access": "Allow",
+              "destinationAddressPrefix": "*",
+              "destinationAddressPrefixes": [],
+              "destinationPortRange": "3389",
+              "destinationPortRanges": [],
+              "direction": "Inbound",
+              "priority": 300,
+              "protocol": "TCP",
+              "sourceAddressPrefix": "*",
+              "sourceAddressPrefixes": [],
+              "sourcePortRange": "*",
+              "sourcePortRanges": []
+            },
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+          }
+        ]
+      },
+      "type": "Microsoft.Network/networkSecurityGroups"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "location": "eastus",
+      "name": "[parameters('networkSecurityGroups_vmweb1nsg264_name')]",
+      "properties": {
+        "securityRules": [
+          {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups/securityRules', parameters('networkSecurityGroups_vmweb1nsg264_name'), 'SSH')]",
+            "name": "SSH",
+            "properties": {
+              "access": "Allow",
+              "destinationAddressPrefix": "*",
+              "destinationAddressPrefixes": [],
+              "destinationPortRange": "22",
+              "destinationPortRanges": [],
+              "direction": "Inbound",
+              "priority": 300,
+              "protocol": "TCP",
+              "sourceAddressPrefix": "*",
+              "sourceAddressPrefixes": [],
+              "sourcePortRange": "*",
+              "sourcePortRanges": []
+            },
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+          },
+          {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups/securityRules', parameters('networkSecurityGroups_vmweb1nsg264_name'), 'allow-http')]",
+            "name": "allow-http",
+            "properties": {
+              "access": "Allow",
+              "destinationAddressPrefix": "*",
+              "destinationAddressPrefixes": [],
+              "destinationPortRange": "80",
+              "destinationPortRanges": [],
+              "direction": "Inbound",
+              "priority": 310,
+              "protocol": "TCP",
+              "sourceAddressPrefix": "*",
+              "sourceAddressPrefixes": [],
+              "sourcePortRange": "*",
+              "sourcePortRanges": []
+            },
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+          }
+        ]
+      },
+      "type": "Microsoft.Network/networkSecurityGroups"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "location": "eastus",
+      "name": "[parameters('networkSecurityGroups_vm_web_2_nsg_name')]",
+      "properties": {
+        "securityRules": [
+          {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups/securityRules', parameters('networkSecurityGroups_vm_web_2_nsg_name'), 'SSH')]",
+            "name": "SSH",
+            "properties": {
+              "access": "Allow",
+              "destinationAddressPrefix": "*",
+              "destinationAddressPrefixes": [],
+              "destinationPortRange": "22",
+              "destinationPortRanges": [],
+              "direction": "Inbound",
+              "priority": 300,
+              "protocol": "TCP",
+              "sourceAddressPrefix": "*",
+              "sourceAddressPrefixes": [],
+              "sourcePortRange": "*",
+              "sourcePortRanges": []
+            },
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+          }
+        ]
+      },
+      "type": "Microsoft.Network/networkSecurityGroups"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "location": "eastus",
+      "name": "[parameters('networkSecurityGroups_vmweb2nsg594_name')]",
+      "properties": {
+        "securityRules": [
+          {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups/securityRules', parameters('networkSecurityGroups_vmweb2nsg594_name'), 'SSH')]",
+            "name": "SSH",
+            "properties": {
+              "access": "Allow",
+              "destinationAddressPrefix": "*",
+              "destinationAddressPrefixes": [],
+              "destinationPortRange": "22",
+              "destinationPortRanges": [],
+              "direction": "Inbound",
+              "priority": 300,
+              "protocol": "TCP",
+              "sourceAddressPrefix": "*",
+              "sourceAddressPrefixes": [],
+              "sourcePortRange": "*",
+              "sourcePortRanges": []
+            },
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+          },
+          {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups/securityRules', parameters('networkSecurityGroups_vmweb2nsg594_name'), 'allow-hyyp')]",
+            "name": "allow-hyyp",
+            "properties": {
+              "access": "Allow",
+              "destinationAddressPrefix": "*",
+              "destinationAddressPrefixes": [],
+              "destinationPortRange": "80",
+              "destinationPortRanges": [],
+              "direction": "Inbound",
+              "priority": 310,
+              "protocol": "TCP",
+              "sourceAddressPrefix": "*",
+              "sourceAddressPrefixes": [],
+              "sourcePortRange": "*",
+              "sourcePortRanges": []
+            },
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+          }
+        ]
+      },
+      "type": "Microsoft.Network/networkSecurityGroups"
+    },
+    {
+      "apiVersion": "2024-06-01",
+      "location": "global",
+      "name": "[parameters('privateDnsZones_privatelink_database_windows_net_name')]",
+      "properties": {},
+      "type": "Microsoft.Network/privateDnsZones"
+    },
+    {
+      "apiVersion": "2024-06-01",
+      "location": "global",
+      "name": "[parameters('privateDnsZones_privatelink_vaultcore_azure_net_name')]",
+      "properties": {},
+      "type": "Microsoft.Network/privateDnsZones"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "location": "eastus",
+      "name": "[parameters('publicIPAddresses_lb_public_ip_name')]",
+      "properties": {
+        "ddosSettings": {
+          "protectionMode": "VirtualNetworkInherited"
+        },
+        "idleTimeoutInMinutes": 4,
+        "ipAddress": "172.210.125.139",
+        "ipTags": [],
+        "publicIPAddressVersion": "IPv4",
+        "publicIPAllocationMethod": "Static"
+      },
+      "sku": {
+        "name": "Standard",
+        "tier": "Regional"
+      },
+      "type": "Microsoft.Network/publicIPAddresses",
+      "zones": [
+        "2",
+        "1",
+        "3"
+      ]
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "location": "eastus",
+      "name": "[parameters('publicIPAddresses_vm_web_1_ip_name')]",
+      "properties": {
+        "ddosSettings": {
+          "protectionMode": "VirtualNetworkInherited"
+        },
+        "idleTimeoutInMinutes": 4,
+        "ipAddress": "20.55.53.161",
+        "ipTags": [],
+        "publicIPAddressVersion": "IPv4",
+        "publicIPAllocationMethod": "Static"
+      },
+      "sku": {
+        "name": "Standard",
+        "tier": "Regional"
+      },
+      "type": "Microsoft.Network/publicIPAddresses",
+      "zones": [
+        "1"
+      ]
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "location": "eastus",
+      "name": "[parameters('publicIPAddresses_vmweb1ip647_name')]",
+      "properties": {
+        "ddosSettings": {
+          "protectionMode": "VirtualNetworkInherited"
+        },
+        "idleTimeoutInMinutes": 4,
+        "ipAddress": "40.76.141.62",
+        "ipTags": [],
+        "publicIPAddressVersion": "IPv4",
+        "publicIPAllocationMethod": "Static"
+      },
+      "sku": {
+        "name": "Standard",
+        "tier": "Regional"
+      },
+      "type": "Microsoft.Network/publicIPAddresses",
+      "zones": [
+        "1"
+      ]
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "location": "eastus",
+      "name": "[parameters('publicIPAddresses_vm_web_2_ip_name')]",
+      "properties": {
+        "ddosSettings": {
+          "protectionMode": "VirtualNetworkInherited"
+        },
+        "idleTimeoutInMinutes": 4,
+        "ipAddress": "20.55.26.19",
+        "ipTags": [],
+        "publicIPAddressVersion": "IPv4",
+        "publicIPAllocationMethod": "Static"
+      },
+      "sku": {
+        "name": "Standard",
+        "tier": "Regional"
+      },
+      "type": "Microsoft.Network/publicIPAddresses",
+      "zones": [
+        "1"
+      ]
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "location": "eastus",
+      "name": "[parameters('publicIPAddresses_vmweb2ip457_name')]",
+      "properties": {
+        "ddosSettings": {
+          "protectionMode": "VirtualNetworkInherited"
+        },
+        "idleTimeoutInMinutes": 4,
+        "ipAddress": "172.203.219.103",
+        "ipTags": [],
+        "publicIPAddressVersion": "IPv4",
+        "publicIPAllocationMethod": "Static"
+      },
+      "sku": {
+        "name": "Standard",
+        "tier": "Regional"
+      },
+      "type": "Microsoft.Network/publicIPAddresses",
+      "zones": [
+        "1"
+      ]
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "location": "eastus",
+      "name": "[parameters('virtualNetworks_vnet_capstone_name')]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        },
+        "enableDdosProtection": false,
+        "encryption": {
+          "enabled": false,
+          "enforcement": "AllowUnencrypted"
+        },
+        "privateEndpointVNetPolicies": "Disabled",
+        "subnets": [
+          {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'web-subnet')]",
+            "name": "web-subnet",
+            "properties": {
+              "addressPrefixes": [
+                "10.0.1.0/24"
+              ],
+              "delegations": [],
+              "privateEndpointNetworkPolicies": "Disabled",
+              "privateLinkServiceNetworkPolicies": "Enabled"
+            },
+            "type": "Microsoft.Network/virtualNetworks/subnets"
+          },
+          {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'app-subnet')]",
+            "name": "app-subnet",
+            "properties": {
+              "addressPrefixes": [
+                "10.0.2.0/24"
+              ],
+              "delegations": [],
+              "privateEndpointNetworkPolicies": "Disabled",
+              "privateLinkServiceNetworkPolicies": "Enabled"
+            },
+            "type": "Microsoft.Network/virtualNetworks/subnets"
+          },
+          {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'db-subnet')]",
+            "name": "db-subnet",
+            "properties": {
+              "addressPrefixes": [
+                "10.0.3.0/24"
+              ],
+              "delegations": [],
+              "privateEndpointNetworkPolicies": "Disabled",
+              "privateLinkServiceNetworkPolicies": "Enabled"
+            },
+            "type": "Microsoft.Network/virtualNetworks/subnets"
+          }
+        ],
+        "virtualNetworkPeerings": []
+      },
+      "type": "Microsoft.Network/virtualNetworks"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "kind": "v12.0",
+      "location": "eastus",
+      "name": "[parameters('servers_capstone_sql_server_001_name')]",
+      "properties": {
+        "administratorLogin": "CloudSA80c475d1",
+        "administrators": {
+          "administratorType": "ActiveDirectory",
+          "azureADOnlyAuthentication": true,
+          "login": "labuser_335200_1776580880871@instructorwhizlabs.onmicrosoft.com",
+          "principalType": "User",
+          "sid": "08425229-e2ff-45cc-b04d-40440b09d199",
+          "tenantId": "82676786-5bc7-43c6-b8f8-b3ee02b0b5f3"
+        },
+        "minimalTlsVersion": "1.2",
+        "publicNetworkAccess": "Disabled",
+        "restrictOutboundNetworkAccess": "Disabled",
+        "retentionDays": -1,
+        "version": "12.0"
+      },
+      "type": "Microsoft.Sql/servers"
+    },
+    {
+      "apiVersion": "2025-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_web_1526_z1_name'))]"
+      ],
+      "location": "eastus",
+      "name": "[parameters('virtualMachines_vm_web_1_name')]",
+      "properties": {
+        "additionalCapabilities": {
+          "hibernationEnabled": false
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true
+          }
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_B1s"
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_web_1526_z1_name'))]",
+              "properties": {
+                "deleteOption": "Detach"
+              }
+            }
+          ]
+        },
+        "osProfile": {
+          "adminUsername": "azureuser",
+          "allowExtensionOperations": true,
+          "computerName": "[parameters('virtualMachines_vm_web_1_name')]",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false,
+            "patchSettings": {
+              "assessmentMode": "ImageDefault",
+              "patchMode": "ImageDefault"
+            },
+            "provisionVMAgent": true
+          },
+          "requireGuestProvisionSignal": true,
+          "secrets": []
+        },
+        "storageProfile": {
+          "dataDisks": [],
+          "diskControllerType": "SCSI",
+          "imageReference": {
+            "offer": "ubuntu-24_04-lts",
+            "publisher": "canonical",
+            "sku": "server",
+            "version": "latest"
+          },
+          "osDisk": {
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "deleteOption": "Delete",
+            "diskSizeGB": 30,
+            "managedDisk": {
+              "id": "[resourceId('Microsoft.Compute/disks', concat(parameters('virtualMachines_vm_web_1_name'), '_disk1_2dbef079a9634e70b22f00c39dda4e46'))]",
+              "storageAccountType": "StandardSSD_LRS"
+            },
+            "name": "[concat(parameters('virtualMachines_vm_web_1_name'), '_disk1_2dbef079a9634e70b22f00c39dda4e46')]",
+            "osType": "Linux"
+          }
+        }
+      },
+      "type": "Microsoft.Compute/virtualMachines",
+      "zones": [
+        "1"
+      ]
+    },
+    {
+      "apiVersion": "2025-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_web_2623_z1_name'))]"
+      ],
+      "location": "eastus",
+      "name": "[parameters('virtualMachines_vm_web_2_name')]",
+      "properties": {
+        "additionalCapabilities": {
+          "hibernationEnabled": false
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true
+          }
+        },
+        "hardwareProfile": {
+          "vmSize": "Standard_B1s"
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_web_2623_z1_name'))]",
+              "properties": {
+                "deleteOption": "Detach"
+              }
+            }
+          ]
+        },
+        "osProfile": {
+          "adminUsername": "azureuser",
+          "allowExtensionOperations": true,
+          "computerName": "[parameters('virtualMachines_vm_web_2_name')]",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false,
+            "patchSettings": {
+              "assessmentMode": "ImageDefault",
+              "patchMode": "ImageDefault"
+            },
+            "provisionVMAgent": true
+          },
+          "requireGuestProvisionSignal": true,
+          "secrets": []
+        },
+        "securityProfile": {
+          "securityType": "TrustedLaunch",
+          "uefiSettings": {
+            "secureBootEnabled": true,
+            "vTpmEnabled": true
+          }
+        },
+        "storageProfile": {
+          "dataDisks": [],
+          "diskControllerType": "SCSI",
+          "imageReference": {
+            "offer": "ubuntu-24_04-lts",
+            "publisher": "canonical",
+            "sku": "server",
+            "version": "latest"
+          },
+          "osDisk": {
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "deleteOption": "Delete",
+            "diskSizeGB": 30,
+            "managedDisk": {
+              "id": "[resourceId('Microsoft.Compute/disks', concat(parameters('virtualMachines_vm_web_2_name'), '_disk1_fc6f4dcc27e847059a4899ce09003b30'))]",
+              "storageAccountType": "StandardSSD_LRS"
+            },
+            "name": "[concat(parameters('virtualMachines_vm_web_2_name'), '_disk1_fc6f4dcc27e847059a4899ce09003b30')]",
+            "osType": "Linux"
+          }
+        }
+      },
+      "type": "Microsoft.Compute/virtualMachines",
+      "zones": [
+        "1"
+      ]
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_capstone1_name'))]"
+      ],
+      "location": "eastus",
+      "name": "[concat(parameters('vaults_kv_capstone1_name'), '/kv-pe_e64333f1-3a6e-4432-a0f0-0bda09f02013')]",
+      "properties": {
+        "privateEndpoint": {},
+        "privateLinkServiceConnectionState": {
+          "actionsRequired": "None",
+          "status": "Approved"
+        }
+      },
+      "type": "Microsoft.KeyVault/vaults/privateEndpointConnections"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_lb_public_ip_name'))]"
+      ],
+      "location": "eastus",
+      "name": "[parameters('loadBalancers_lb_capstone_name')]",
+      "properties": {
+        "backendAddressPools": [
+          {
+            "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', parameters('loadBalancers_lb_capstone_name'), 'backend-pool-1')]",
+            "name": "backend-pool-1",
+            "properties": {
+              "loadBalancerBackendAddresses": [
+                {
+                  "name": "rg_sb_centralindia_335200_3_17765808883_vm-web-2623_z1ipconfig1",
+                  "properties": {}
+                },
+                {
+                  "name": "rg_sb_centralindia_335200_3_17765808883_vm-web-1526_z1ipconfig1",
+                  "properties": {}
+                }
+              ]
+            }
+          }
+        ],
+        "frontendIPConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_lb_capstone_name')), '/frontendIPConfigurations/lb-public-ip')]",
+            "name": "lb-public-ip",
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_lb_public_ip_name'))]"
+              }
+            }
+          }
+        ],
+        "inboundNatPools": [],
+        "inboundNatRules": [],
+        "loadBalancingRules": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_lb_capstone_name')), '/loadBalancingRules/http-rule')]",
+            "name": "http-rule",
+            "properties": {
+              "backendAddressPool": {
+                "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', parameters('loadBalancers_lb_capstone_name'), 'backend-pool-1')]"
+              },
+              "backendAddressPools": [
+                {
+                  "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', parameters('loadBalancers_lb_capstone_name'), 'backend-pool-1')]"
+                }
+              ],
+              "backendPort": 80,
+              "disableOutboundSnat": true,
+              "enableConnectionTracking": false,
+              "enableFloatingIP": false,
+              "enableTcpReset": false,
+              "frontendIPConfiguration": {
+                "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_lb_capstone_name')), '/frontendIPConfigurations/lb-public-ip')]"
+              },
+              "frontendPort": 80,
+              "idleTimeoutInMinutes": 4,
+              "loadDistribution": "Default",
+              "probe": {
+                "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_lb_capstone_name')), '/probes/http-probe')]"
+              },
+              "protocol": "Tcp"
+            }
+          }
+        ],
+        "outboundRules": [],
+        "probes": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_lb_capstone_name')), '/probes/http-probe')]",
+            "name": "http-probe",
+            "properties": {
+              "intervalInSeconds": 5,
+              "noHealthyBackendsBehavior": "AllProbedDown",
+              "numberOfProbes": 1,
+              "port": 80,
+              "probeThreshold": 1,
+              "protocol": "Http",
+              "requestPath": "/"
+            }
+          }
+        ]
+      },
+      "sku": {
+        "name": "Standard",
+        "tier": "Regional"
+      },
+      "type": "Microsoft.Network/loadBalancers"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_lb_capstone_name'))]"
+      ],
+      "name": "[concat(parameters('loadBalancers_lb_capstone_name'), '/backend-pool-1')]",
+      "properties": {
+        "loadBalancerBackendAddresses": [
+          {
+            "name": "rg_sb_centralindia_335200_3_17765808883_vm-web-2623_z1ipconfig1",
+            "properties": {}
+          },
+          {
+            "name": "rg_sb_centralindia_335200_3_17765808883_vm-web-1526_z1ipconfig1",
+            "properties": {}
+          }
+        ]
+      },
+      "type": "Microsoft.Network/loadBalancers/backendAddressPools"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nsg_web_name'))]"
+      ],
+      "name": "[concat(parameters('networkSecurityGroups_nsg_web_name'), '/allow-http')]",
+      "properties": {
+        "access": "Allow",
+        "description": "Allow web traffic",
+        "destinationAddressPrefix": "*",
+        "destinationAddressPrefixes": [],
+        "destinationPortRange": "80",
+        "destinationPortRanges": [],
+        "direction": "Inbound",
+        "priority": 100,
+        "protocol": "TCP",
+        "sourceAddressPrefix": "*",
+        "sourceAddressPrefixes": [],
+        "sourcePortRange": "*",
+        "sourcePortRanges": []
+      },
+      "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_vmweb1nsg264_name'))]"
+      ],
+      "name": "[concat(parameters('networkSecurityGroups_vmweb1nsg264_name'), '/allow-http')]",
+      "properties": {
+        "access": "Allow",
+        "destinationAddressPrefix": "*",
+        "destinationAddressPrefixes": [],
+        "destinationPortRange": "80",
+        "destinationPortRanges": [],
+        "direction": "Inbound",
+        "priority": 310,
+        "protocol": "TCP",
+        "sourceAddressPrefix": "*",
+        "sourceAddressPrefixes": [],
+        "sourcePortRange": "*",
+        "sourcePortRanges": []
+      },
+      "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nsg_web_name'))]"
+      ],
+      "name": "[concat(parameters('networkSecurityGroups_nsg_web_name'), '/allow-https')]",
+      "properties": {
+        "access": "Allow",
+        "destinationAddressPrefix": "*",
+        "destinationAddressPrefixes": [],
+        "destinationPortRange": "443",
+        "destinationPortRanges": [],
+        "direction": "Inbound",
+        "priority": 110,
+        "protocol": "TCP",
+        "sourceAddressPrefix": "*",
+        "sourceAddressPrefixes": [],
+        "sourcePortRange": "*",
+        "sourcePortRanges": []
+      },
+      "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_vmweb2nsg594_name'))]"
+      ],
+      "name": "[concat(parameters('networkSecurityGroups_vmweb2nsg594_name'), '/allow-hyyp')]",
+      "properties": {
+        "access": "Allow",
+        "destinationAddressPrefix": "*",
+        "destinationAddressPrefixes": [],
+        "destinationPortRange": "80",
+        "destinationPortRanges": [],
+        "direction": "Inbound",
+        "priority": 310,
+        "protocol": "TCP",
+        "sourceAddressPrefix": "*",
+        "sourceAddressPrefixes": [],
+        "sourcePortRange": "*",
+        "sourcePortRanges": []
+      },
+      "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nsg_web_name'))]"
+      ],
+      "name": "[concat(parameters('networkSecurityGroups_nsg_web_name'), '/allow-rdp')]",
+      "properties": {
+        "access": "Allow",
+        "destinationAddressPrefix": "*",
+        "destinationAddressPrefixes": [],
+        "destinationPortRange": "3389",
+        "destinationPortRanges": [],
+        "direction": "Inbound",
+        "priority": 120,
+        "protocol": "TCP",
+        "sourceAddressPrefix": "*",
+        "sourceAddressPrefixes": [],
+        "sourcePortRange": "*",
+        "sourcePortRanges": []
+      },
+      "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_vm_web_1_nsg_name'))]"
+      ],
+      "name": "[concat(parameters('networkSecurityGroups_vm_web_1_nsg_name'), '/RDP')]",
+      "properties": {
+        "access": "Allow",
+        "destinationAddressPrefix": "*",
+        "destinationAddressPrefixes": [],
+        "destinationPortRange": "3389",
+        "destinationPortRanges": [],
+        "direction": "Inbound",
+        "priority": 300,
+        "protocol": "TCP",
+        "sourceAddressPrefix": "*",
+        "sourceAddressPrefixes": [],
+        "sourcePortRange": "*",
+        "sourcePortRanges": []
+      },
+      "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_vmweb1nsg264_name'))]"
+      ],
+      "name": "[concat(parameters('networkSecurityGroups_vmweb1nsg264_name'), '/SSH')]",
+      "properties": {
+        "access": "Allow",
+        "destinationAddressPrefix": "*",
+        "destinationAddressPrefixes": [],
+        "destinationPortRange": "22",
+        "destinationPortRanges": [],
+        "direction": "Inbound",
+        "priority": 300,
+        "protocol": "TCP",
+        "sourceAddressPrefix": "*",
+        "sourceAddressPrefixes": [],
+        "sourcePortRange": "*",
+        "sourcePortRanges": []
+      },
+      "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_vm_web_2_nsg_name'))]"
+      ],
+      "name": "[concat(parameters('networkSecurityGroups_vm_web_2_nsg_name'), '/SSH')]",
+      "properties": {
+        "access": "Allow",
+        "destinationAddressPrefix": "*",
+        "destinationAddressPrefixes": [],
+        "destinationPortRange": "22",
+        "destinationPortRanges": [],
+        "direction": "Inbound",
+        "priority": 300,
+        "protocol": "TCP",
+        "sourceAddressPrefix": "*",
+        "sourceAddressPrefixes": [],
+        "sourcePortRange": "*",
+        "sourcePortRanges": []
+      },
+      "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_vmweb2nsg594_name'))]"
+      ],
+      "name": "[concat(parameters('networkSecurityGroups_vmweb2nsg594_name'), '/SSH')]",
+      "properties": {
+        "access": "Allow",
+        "destinationAddressPrefix": "*",
+        "destinationAddressPrefixes": [],
+        "destinationPortRange": "22",
+        "destinationPortRanges": [],
+        "direction": "Inbound",
+        "priority": 300,
+        "protocol": "TCP",
+        "sourceAddressPrefix": "*",
+        "sourceAddressPrefixes": [],
+        "sourcePortRange": "*",
+        "sourcePortRanges": []
+      },
+      "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+    },
+    {
+      "apiVersion": "2024-06-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateDnsZones_privatelink_database_windows_net_name'))]"
+      ],
+      "name": "[concat(parameters('privateDnsZones_privatelink_database_windows_net_name'), '/capstone-sql-server-001')]",
+      "properties": {
+        "aRecords": [
+          {
+            "ipv4Address": "10.0.3.4"
+          }
+        ],
+        "ttl": 3600
+      },
+      "type": "Microsoft.Network/privateDnsZones/A"
+    },
+    {
+      "apiVersion": "2024-06-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateDnsZones_privatelink_vaultcore_azure_net_name'))]"
+      ],
+      "name": "[concat(parameters('privateDnsZones_privatelink_vaultcore_azure_net_name'), '/kv-capstone1')]",
+      "properties": {
+        "aRecords": [
+          {
+            "ipv4Address": "10.0.3.5"
+          }
+        ],
+        "ttl": 3600
+      },
+      "type": "Microsoft.Network/privateDnsZones/A"
+    },
+    {
+      "apiVersion": "2024-06-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateDnsZones_privatelink_database_windows_net_name'))]"
+      ],
+      "name": "[concat(parameters('privateDnsZones_privatelink_database_windows_net_name'), '/@')]",
+      "properties": {
+        "soaRecord": {
+          "email": "azureprivatedns-host.microsoft.com",
+          "expireTime": 2419200,
+          "host": "azureprivatedns.net",
+          "minimumTtl": 10,
+          "refreshTime": 3600,
+          "retryTime": 300,
+          "serialNumber": 1
+        },
+        "ttl": 3600
+      },
+      "type": "Microsoft.Network/privateDnsZones/SOA"
+    },
+    {
+      "apiVersion": "2024-06-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateDnsZones_privatelink_vaultcore_azure_net_name'))]"
+      ],
+      "name": "[concat(parameters('privateDnsZones_privatelink_vaultcore_azure_net_name'), '/@')]",
+      "properties": {
+        "soaRecord": {
+          "email": "azureprivatedns-host.microsoft.com",
+          "expireTime": 2419200,
+          "host": "azureprivatedns.net",
+          "minimumTtl": 10,
+          "refreshTime": 3600,
+          "retryTime": 300,
+          "serialNumber": 1
+        },
+        "ttl": 3600
+      },
+      "type": "Microsoft.Network/privateDnsZones/SOA"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_capstone_name'))]"
+      ],
+      "name": "[concat(parameters('virtualNetworks_vnet_capstone_name'), '/app-subnet')]",
+      "properties": {
+        "addressPrefixes": [
+          "10.0.2.0/24"
+        ],
+        "delegations": [],
+        "privateEndpointNetworkPolicies": "Disabled",
+        "privateLinkServiceNetworkPolicies": "Enabled"
+      },
+      "type": "Microsoft.Network/virtualNetworks/subnets"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_capstone_name'))]"
+      ],
+      "name": "[concat(parameters('virtualNetworks_vnet_capstone_name'), '/db-subnet')]",
+      "properties": {
+        "addressPrefixes": [
+          "10.0.3.0/24"
+        ],
+        "delegations": [],
+        "privateEndpointNetworkPolicies": "Disabled",
+        "privateLinkServiceNetworkPolicies": "Enabled"
+      },
+      "type": "Microsoft.Network/virtualNetworks/subnets"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_capstone_name'))]"
+      ],
+      "name": "[concat(parameters('virtualNetworks_vnet_capstone_name'), '/web-subnet')]",
+      "properties": {
+        "addressPrefixes": [
+          "10.0.1.0/24"
+        ],
+        "delegations": [],
+        "privateEndpointNetworkPolicies": "Disabled",
+        "privateLinkServiceNetworkPolicies": "Enabled"
+      },
+      "type": "Microsoft.Network/virtualNetworks/subnets"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/ActiveDirectory')]",
+      "properties": {
+        "administratorType": "ActiveDirectory",
+        "login": "labuser_335200_1776580880871@instructorwhizlabs.onmicrosoft.com",
+        "sid": "08425229-e2ff-45cc-b04d-40440b09d199",
+        "tenantId": "82676786-5bc7-43c6-b8f8-b3ee02b0b5f3"
+      },
+      "type": "Microsoft.Sql/servers/administrators"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/Default')]",
+      "properties": {
+        "state": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/advancedThreatProtectionSettings"
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/CreateIndex')]",
+      "properties": {
+        "autoExecuteValue": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/advisors"
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/DbParameterization')]",
+      "properties": {
+        "autoExecuteValue": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/advisors"
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/DefragmentIndex')]",
+      "properties": {
+        "autoExecuteValue": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/advisors"
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/DropIndex')]",
+      "properties": {
+        "autoExecuteValue": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/advisors"
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/ForceLastGoodPlan')]",
+      "properties": {
+        "autoExecuteValue": "Enabled"
+      },
+      "type": "Microsoft.Sql/servers/advisors"
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "location": "East US",
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/Default')]",
+      "properties": {
+        "auditingState": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/auditingPolicies"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/Default')]",
+      "properties": {
+        "auditActionsAndGroups": [],
+        "isAzureMonitorTargetEnabled": false,
+        "isManagedIdentityInUse": false,
+        "isStorageSecondaryKeyInUse": false,
+        "retentionDays": 0,
+        "state": "Disabled",
+        "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      "type": "Microsoft.Sql/servers/auditingSettings"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/Default')]",
+      "properties": {
+        "azureADOnlyAuthentication": true
+      },
+      "type": "Microsoft.Sql/servers/azureADOnlyAuthentications"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "location": "eastus",
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/default')]",
+      "properties": {
+        "connectionType": "Default"
+      },
+      "type": "Microsoft.Sql/servers/connectionPolicies"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "kind": "v12.0,user",
+      "location": "eastus",
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db')]",
+      "properties": {
+        "availabilityZone": "NoPreference",
+        "catalogCollation": "SQL_Latin1_General_CP1_CI_AS",
+        "collation": "SQL_Latin1_General_CP1_CI_AS",
+        "isLedgerOn": false,
+        "maintenanceConfigurationId": "/subscriptions/4f6a6eb9-27d0-4ed6-a31c-2bde135e2db6/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default",
+        "maxSizeBytes": 2147483648,
+        "readScale": "Disabled",
+        "requestedBackupStorageRedundancy": "Local",
+        "zoneRedundant": false
+      },
+      "sku": {
+        "capacity": 5,
+        "name": "Basic",
+        "tier": "Basic"
+      },
+      "type": "Microsoft.Sql/servers/databases"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/master/Default')]",
+      "properties": {
+        "state": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/advancedThreatProtectionSettings"
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "location": "East US",
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/master/Default')]",
+      "properties": {
+        "auditingState": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/auditingPolicies"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/master/Default')]",
+      "properties": {
+        "isAzureMonitorTargetEnabled": false,
+        "retentionDays": 0,
+        "state": "Disabled",
+        "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      "type": "Microsoft.Sql/servers/databases/auditingSettings"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/master/Default')]",
+      "properties": {
+        "isAzureMonitorTargetEnabled": false,
+        "retentionDays": 0,
+        "state": "Disabled",
+        "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      "type": "Microsoft.Sql/servers/databases/extendedAuditingSettings"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/master/Default')]",
+      "properties": {
+        "state": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/geoBackupPolicies"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/master/Current')]",
+      "properties": {},
+      "type": "Microsoft.Sql/servers/databases/ledgerDigestUploads"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/master/Default')]",
+      "properties": {
+        "disabledAlerts": [
+          ""
+        ],
+        "emailAccountAdmins": false,
+        "emailAddresses": [
+          ""
+        ],
+        "retentionDays": 0,
+        "state": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/securityAlertPolicies"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/master/Current')]",
+      "properties": {
+        "state": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/transparentDataEncryption"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/master/Default')]",
+      "properties": {
+        "recurringScans": {
+          "emailSubscriptionAdmins": true,
+          "isEnabled": false
+        }
+      },
+      "type": "Microsoft.Sql/servers/databases/vulnerabilityAssessments"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/Default')]",
+      "properties": {
+        "isAzureMonitorTargetEnabled": false,
+        "isManagedIdentityInUse": false,
+        "state": "Disabled",
+        "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      "type": "Microsoft.Sql/servers/devOpsAuditingSettings"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "kind": "servicemanaged",
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/current')]",
+      "properties": {
+        "autoRotationEnabled": false,
+        "serverKeyName": "ServiceManaged",
+        "serverKeyType": "ServiceManaged"
+      },
+      "type": "Microsoft.Sql/servers/encryptionProtector"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/Default')]",
+      "properties": {
+        "auditActionsAndGroups": [],
+        "isAzureMonitorTargetEnabled": false,
+        "isManagedIdentityInUse": false,
+        "isStorageSecondaryKeyInUse": false,
+        "retentionDays": 0,
+        "state": "Disabled",
+        "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      "type": "Microsoft.Sql/servers/extendedAuditingSettings"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "kind": "servicemanaged",
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/ServiceManaged')]",
+      "properties": {
+        "serverKeyType": "ServiceManaged"
+      },
+      "type": "Microsoft.Sql/servers/keys"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/Default')]",
+      "properties": {
+        "disabledAlerts": [
+          ""
+        ],
+        "emailAccountAdmins": false,
+        "emailAddresses": [
+          ""
+        ],
+        "retentionDays": 0,
+        "state": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/securityAlertPolicies"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/Default')]",
+      "properties": {
+        "state": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/sqlVulnerabilityAssessments"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/Default')]",
+      "properties": {
+        "recurringScans": {
+          "emailSubscriptionAdmins": true,
+          "isEnabled": false
+        },
+        "storageContainerPath": "[parameters('vulnerabilityAssessments_Default_storageContainerPath')]"
+      },
+      "type": "Microsoft.Sql/servers/vulnerabilityAssessments"
+    },
+    {
+      "apiVersion": "2018-03-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_vm_web_1_name'))]",
+        "[resourceId('microsoft.insights/actionGroups', parameters('actionGroups_vm_alert_group_name'))]"
+      ],
+      "location": "global",
+      "name": "[parameters('metricAlerts_AlertOpsTeam_name')]",
+      "properties": {
+        "actions": [
+          {
+            "actionGroupId": "[resourceId('microsoft.insights/actionGroups', parameters('actionGroups_vm_alert_group_name'))]",
+            "webHookProperties": {}
+          }
+        ],
+        "autoMitigate": true,
+        "criteria": {
+          "allOf": [
+            {
+              "criterionType": "StaticThresholdCriterion",
+              "metricName": "Percentage CPU",
+              "metricNamespace": "Microsoft.Compute/virtualMachines",
+              "name": "Metric1",
+              "operator": "GreaterThan",
+              "skipMetricValidation": false,
+              "threshold": 80.0,
+              "timeAggregation": "Average"
+            }
+          ],
+          "odata.type": "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
+        },
+        "enabled": true,
+        "evaluationFrequency": "PT1M",
+        "scopes": [
+          "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_vm_web_1_name'))]"
+        ],
+        "severity": 0,
+        "targetResourceRegion": "eastus",
+        "targetResourceType": "Microsoft.Compute/virtualMachines",
+        "windowSize": "PT5M"
+      },
+      "type": "microsoft.insights/metricAlerts"
+    },
+    {
+      "apiVersion": "2024-06-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateDnsZones_privatelink_database_windows_net_name'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_capstone_name'))]"
+      ],
+      "location": "global",
+      "name": "[concat(parameters('privateDnsZones_privatelink_database_windows_net_name'), '/ef4zg2lygf3y2')]",
+      "properties": {
+        "registrationEnabled": false,
+        "resolutionPolicy": "Default",
+        "virtualNetwork": {
+          "id": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_capstone_name'))]"
+        }
+      },
+      "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks"
+    },
+    {
+      "apiVersion": "2024-06-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateDnsZones_privatelink_vaultcore_azure_net_name'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_capstone_name'))]"
+      ],
+      "location": "global",
+      "name": "[concat(parameters('privateDnsZones_privatelink_vaultcore_azure_net_name'), '/ef4zg2lygf3y2')]",
+      "properties": {
+        "registrationEnabled": false,
+        "resolutionPolicy": "Default",
+        "virtualNetwork": {
+          "id": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_capstone_name'))]"
+        }
+      },
+      "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_capstone1_name'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'db-subnet')]"
+      ],
+      "location": "eastus",
+      "name": "[parameters('privateEndpoints_kv_pe_name')]",
+      "properties": {
+        "customDnsConfigs": [
+          {
+            "fqdn": "kv-capstone1.vault.azure.net",
+            "ipAddresses": [
+              "10.0.3.5"
+            ]
+          }
+        ],
+        "ipConfigurations": [],
+        "ipVersionType": "IPv4",
+        "manualPrivateLinkServiceConnections": [],
+        "privateLinkServiceConnections": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/privateEndpoints', parameters('privateEndpoints_kv_pe_name')), concat('/privateLinkServiceConnections/', parameters('privateEndpoints_kv_pe_name'), '_e64333f1-3a6e-4432-a0f0-0bda09f02013'))]",
+            "name": "[concat(parameters('privateEndpoints_kv_pe_name'), '_e64333f1-3a6e-4432-a0f0-0bda09f02013')]",
+            "properties": {
+              "groupIds": [
+                "vault"
+              ],
+              "privateLinkServiceConnectionState": {
+                "actionsRequired": "None",
+                "status": "Approved"
+              },
+              "privateLinkServiceId": "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_capstone1_name'))]"
+            }
+          }
+        ],
+        "subnet": {
+          "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'db-subnet')]"
+        }
+      },
+      "type": "Microsoft.Network/privateEndpoints"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'db-subnet')]"
+      ],
+      "location": "eastus",
+      "name": "[parameters('privateEndpoints_sql_private_endpoint_name')]",
+      "properties": {
+        "customDnsConfigs": [
+          {
+            "fqdn": "capstone-sql-server-001.database.windows.net",
+            "ipAddresses": [
+              "10.0.3.4"
+            ]
+          }
+        ],
+        "ipConfigurations": [],
+        "ipVersionType": "IPv4",
+        "manualPrivateLinkServiceConnections": [],
+        "privateLinkServiceConnections": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/privateEndpoints', parameters('privateEndpoints_sql_private_endpoint_name')), concat('/privateLinkServiceConnections/', parameters('privateEndpoints_sql_private_endpoint_name')))]",
+            "name": "[parameters('privateEndpoints_sql_private_endpoint_name')]",
+            "properties": {
+              "groupIds": [
+                "SqlServer"
+              ],
+              "privateLinkServiceConnectionState": {
+                "actionsRequired": "None",
+                "description": "Auto-approved",
+                "status": "Approved"
+              },
+              "privateLinkServiceId": "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+            }
+          }
+        ],
+        "subnet": {
+          "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'db-subnet')]"
+        }
+      },
+      "type": "Microsoft.Network/privateEndpoints"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/Default')]",
+      "properties": {
+        "state": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/advancedThreatProtectionSettings"
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/CreateIndex')]",
+      "properties": {
+        "autoExecuteValue": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/advisors"
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/DbParameterization')]",
+      "properties": {
+        "autoExecuteValue": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/advisors"
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/DefragmentIndex')]",
+      "properties": {
+        "autoExecuteValue": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/advisors"
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/DropIndex')]",
+      "properties": {
+        "autoExecuteValue": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/advisors"
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/ForceLastGoodPlan')]",
+      "properties": {
+        "autoExecuteValue": "Enabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/advisors"
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "location": "East US",
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/Default')]",
+      "properties": {
+        "auditingState": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/auditingPolicies"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/Default')]",
+      "properties": {
+        "isAzureMonitorTargetEnabled": false,
+        "retentionDays": 0,
+        "state": "Disabled",
+        "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      "type": "Microsoft.Sql/servers/databases/auditingSettings"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/default')]",
+      "properties": {
+        "monthlyRetention": "PT0S",
+        "timeBasedImmutability": "Disabled",
+        "weekOfYear": 0,
+        "weeklyRetention": "PT0S",
+        "yearlyRetention": "PT0S"
+      },
+      "type": "Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/default')]",
+      "properties": {
+        "diffBackupIntervalInHours": 24,
+        "retentionDays": 7
+      },
+      "type": "Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/Default')]",
+      "properties": {
+        "isAzureMonitorTargetEnabled": false,
+        "retentionDays": 0,
+        "state": "Disabled",
+        "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      "type": "Microsoft.Sql/servers/databases/extendedAuditingSettings"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/Default')]",
+      "properties": {
+        "state": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/geoBackupPolicies"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/Current')]",
+      "properties": {},
+      "type": "Microsoft.Sql/servers/databases/ledgerDigestUploads"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/Default')]",
+      "properties": {
+        "disabledAlerts": [
+          ""
+        ],
+        "emailAccountAdmins": false,
+        "emailAddresses": [
+          ""
+        ],
+        "retentionDays": 0,
+        "state": "Disabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/securityAlertPolicies"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/Current')]",
+      "properties": {
+        "state": "Enabled"
+      },
+      "type": "Microsoft.Sql/servers/databases/transparentDataEncryption"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_capstone_sql_server_001_name'), 'capstone-db')]",
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/capstone-db/Default')]",
+      "properties": {
+        "recurringScans": {
+          "emailSubscriptionAdmins": true,
+          "isEnabled": false
+        }
+      },
+      "type": "Microsoft.Sql/servers/databases/vulnerabilityAssessments"
+    },
+    {
+      "apiVersion": "2024-11-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_capstone_sql_server_001_name'))]",
+        "[resourceId('Microsoft.Network/privateEndpoints', parameters('privateEndpoints_sql_private_endpoint_name'))]"
+      ],
+      "name": "[concat(parameters('servers_capstone_sql_server_001_name'), '/sql-private-endpoint-1ad944e7-8af4-4f82-8ab5-96d332d27dc0')]",
+      "properties": {
+        "privateEndpoint": {
+          "id": "[resourceId('Microsoft.Network/privateEndpoints', parameters('privateEndpoints_sql_private_endpoint_name'))]"
+        },
+        "privateLinkServiceConnectionState": {
+          "description": "Auto-approved",
+          "status": "Approved"
+        }
+      },
+      "type": "Microsoft.Sql/servers/privateEndpointConnections"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_vm_web_1_ip_name'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'web-subnet')]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_vm_web_1_nsg_name'))]"
+      ],
+      "kind": "Regular",
+      "location": "eastus",
+      "name": "[parameters('networkInterfaces_vm_web_132_z1_name')]",
+      "properties": {
+        "auxiliaryMode": "None",
+        "auxiliarySku": "None",
+        "disableTcpStateTracking": false,
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableAcceleratedNetworking": false,
+        "enableIPForwarding": false,
+        "ipConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_web_132_z1_name')), '/ipConfigurations/ipconfig1')]",
+            "name": "ipconfig1",
+            "properties": {
+              "primary": true,
+              "privateIPAddress": "10.0.1.4",
+              "privateIPAddressVersion": "IPv4",
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_vm_web_1_ip_name'))]",
+                "properties": {
+                  "deleteOption": "Detach"
+                }
+              },
+              "subnet": {
+                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'web-subnet')]"
+              }
+            },
+            "type": "Microsoft.Network/networkInterfaces/ipConfigurations"
+          }
+        ],
+        "networkSecurityGroup": {
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_vm_web_1_nsg_name'))]"
+        },
+        "nicType": "Standard"
+      },
+      "type": "Microsoft.Network/networkInterfaces"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_vm_web_2_ip_name'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'web-subnet')]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_vm_web_2_nsg_name'))]"
+      ],
+      "kind": "Regular",
+      "location": "eastus",
+      "name": "[parameters('networkInterfaces_vm_web_2913_z1_name')]",
+      "properties": {
+        "auxiliaryMode": "None",
+        "auxiliarySku": "None",
+        "disableTcpStateTracking": false,
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableAcceleratedNetworking": false,
+        "enableIPForwarding": false,
+        "ipConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_web_2913_z1_name')), '/ipConfigurations/ipconfig1')]",
+            "name": "ipconfig1",
+            "properties": {
+              "primary": true,
+              "privateIPAddress": "10.0.1.5",
+              "privateIPAddressVersion": "IPv4",
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_vm_web_2_ip_name'))]",
+                "properties": {
+                  "deleteOption": "Detach"
+                }
+              },
+              "subnet": {
+                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'web-subnet')]"
+              }
+            },
+            "type": "Microsoft.Network/networkInterfaces/ipConfigurations"
+          }
+        ],
+        "networkSecurityGroup": {
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_vm_web_2_nsg_name'))]"
+        },
+        "nicType": "Standard"
+      },
+      "type": "Microsoft.Network/networkInterfaces"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_vmweb1ip647_name'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'web-subnet')]",
+        "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', parameters('loadBalancers_lb_capstone_name'), 'backend-pool-1')]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_vmweb1nsg264_name'))]"
+      ],
+      "kind": "Regular",
+      "location": "eastus",
+      "name": "[parameters('networkInterfaces_vm_web_1526_z1_name')]",
+      "properties": {
+        "auxiliaryMode": "None",
+        "auxiliarySku": "None",
+        "disableTcpStateTracking": false,
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableAcceleratedNetworking": false,
+        "enableIPForwarding": false,
+        "ipConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_web_1526_z1_name')), '/ipConfigurations/ipconfig1')]",
+            "name": "ipconfig1",
+            "properties": {
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', parameters('loadBalancers_lb_capstone_name'), 'backend-pool-1')]"
+                }
+              ],
+              "primary": true,
+              "privateIPAddress": "10.0.1.6",
+              "privateIPAddressVersion": "IPv4",
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_vmweb1ip647_name'))]",
+                "properties": {
+                  "deleteOption": "Detach"
+                }
+              },
+              "subnet": {
+                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'web-subnet')]"
+              }
+            },
+            "type": "Microsoft.Network/networkInterfaces/ipConfigurations"
+          }
+        ],
+        "networkSecurityGroup": {
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_vmweb1nsg264_name'))]"
+        },
+        "nicType": "Standard"
+      },
+      "type": "Microsoft.Network/networkInterfaces"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_vmweb2ip457_name'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'web-subnet')]",
+        "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', parameters('loadBalancers_lb_capstone_name'), 'backend-pool-1')]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_vmweb2nsg594_name'))]"
+      ],
+      "kind": "Regular",
+      "location": "eastus",
+      "name": "[parameters('networkInterfaces_vm_web_2623_z1_name')]",
+      "properties": {
+        "auxiliaryMode": "None",
+        "auxiliarySku": "None",
+        "disableTcpStateTracking": false,
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableAcceleratedNetworking": false,
+        "enableIPForwarding": false,
+        "ipConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_web_2623_z1_name')), '/ipConfigurations/ipconfig1')]",
+            "name": "ipconfig1",
+            "properties": {
+              "loadBalancerBackendAddressPools": [
+                {
+                  "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', parameters('loadBalancers_lb_capstone_name'), 'backend-pool-1')]"
+                }
+              ],
+              "primary": true,
+              "privateIPAddress": "10.0.1.7",
+              "privateIPAddressVersion": "IPv4",
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_vmweb2ip457_name'))]",
+                "properties": {
+                  "deleteOption": "Detach"
+                }
+              },
+              "subnet": {
+                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_capstone_name'), 'web-subnet')]"
+              }
+            },
+            "type": "Microsoft.Network/networkInterfaces/ipConfigurations"
+          }
+        ],
+        "networkSecurityGroup": {
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_vmweb2nsg594_name'))]"
+        },
+        "nicType": "Standard"
+      },
+      "type": "Microsoft.Network/networkInterfaces"
+    }
+  ],
+  "variables": {}
+}
