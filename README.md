@@ -1,4 +1,3 @@
-# azure-capstone-project
 # Azure Capstone Project
 
 ## Overview
